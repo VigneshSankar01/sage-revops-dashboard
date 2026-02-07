@@ -16,3 +16,10 @@ dist/
 # Environment
 .env
 *.pem
+
+# Terraform
+infrastructure/.terraform/
+infrastructure/*.tfstate
+infrastructure/*.tfstate.*
+infrastructure/*.tfvars
+infrastructure/.terraform.lock.hcl
