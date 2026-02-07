@@ -108,4 +108,7 @@ resource "aws_lambda_function" "get_last_month_sales" {
       SF_ACCOUNT  = "${var.snowflake_org}-${var.snowflake_account_name}"
     }
   }
+  layers = [
+    "arn:aws:lambda:us-east-1:022499024283:layer:snowflake-connector:3"
+  ]
 }

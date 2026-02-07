@@ -1,6 +1,13 @@
 import json
 import os
 import snowflake.connector
+from decimal import Decimal
+
+def decimal_default(obj):
+    """Helper function to convert Decimal to float for JSON serialization"""
+    if isinstance(obj, Decimal):
+        return float(obj)
+    raise TypeError
 
 def lambda_handler(event, context):
     try:
@@ -40,9 +47,6 @@ def lambda_handler(event, context):
         data = []
         for row in rows:
             record = dict(zip(columns, row))
-            for key, val in record.items():
-                if hasattr(val, 'is_integer'):
-                    record[key] = float(val)
             data.append(record)
 
         conn.close()
@@ -57,7 +61,7 @@ def lambda_handler(event, context):
                 'status': 'success',
                 'data': data,
                 'filter': product or 'All'
-            })
+            }, default=decimal_default)
         }
 
     except Exception as e:
