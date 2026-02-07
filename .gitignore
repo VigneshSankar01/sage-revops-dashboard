@@ -23,3 +23,7 @@ infrastructure/*.tfstate
 infrastructure/*.tfstate.*
 infrastructure/*.tfvars
 infrastructure/.terraform.lock.hcl
+
+#JAR
+
+*.jar
