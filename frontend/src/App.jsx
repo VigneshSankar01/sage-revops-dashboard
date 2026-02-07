@@ -69,7 +69,7 @@ function App() {
   return (
     <div className="container">
       <header className="header">
-        <h1>Sage RevOps Dashboard</h1>
+        <h1>RevOps Analytics Dashboard</h1>
         <p>Pipeline Analytics & Insights</p>
       </header>
 
